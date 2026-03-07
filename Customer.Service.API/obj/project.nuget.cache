@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "4ecc2x97foA=",
+  "success": true,
+  "projectFilePath": "C:\\Job\\Github\\Dinet\\Dinet Payload Test\\Customer.Service.API\\Customer.Service.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\lgrau\\.nuget\\packages\\datadog.trace\\3.38.0\\datadog.trace.3.38.0.nupkg.sha512",
+    "C:\\Users\\lgrau\\.nuget\\packages\\microsoft.extensions.apidescription.server\\8.0.0\\microsoft.extensions.apidescription.server.8.0.0.nupkg.sha512",
+    "C:\\Users\\lgrau\\.nuget\\packages\\microsoft.openapi\\2.4.1\\microsoft.openapi.2.4.1.nupkg.sha512",
+    "C:\\Users\\lgrau\\.nuget\\packages\\swashbuckle.aspnetcore\\10.1.4\\swashbuckle.aspnetcore.10.1.4.nupkg.sha512",
+    "C:\\Users\\lgrau\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\10.1.4\\swashbuckle.aspnetcore.swagger.10.1.4.nupkg.sha512",
+    "C:\\Users\\lgrau\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\10.1.4\\swashbuckle.aspnetcore.swaggergen.10.1.4.nupkg.sha512",
+    "C:\\Users\\lgrau\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\10.1.4\\swashbuckle.aspnetcore.swaggerui.10.1.4.nupkg.sha512",
+    "C:\\Users\\lgrau\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.4.1\\system.diagnostics.diagnosticsource.4.4.1.nupkg.sha512",
+    "C:\\Users\\lgrau\\.nuget\\packages\\system.text.json\\8.0.5\\system.text.json.8.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}
