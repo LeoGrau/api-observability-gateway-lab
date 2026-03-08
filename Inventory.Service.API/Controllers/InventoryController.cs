@@ -14,4 +14,11 @@ public class InventoryController : ControllerBase
     {
         return Ok(new { message = "Success", data = new { name = "TEMU IPhone 12", id = 2372 } });
     }
+
+    
+    [HttpPost]
+    public IActionResult Post([FromBody] CreateProductRequest request)
+    {
+        return Ok(new { message = "Success in POST", data = new { request.Name } });
+    }
 }

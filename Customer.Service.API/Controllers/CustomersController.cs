@@ -14,4 +14,10 @@ public class CustomersController : ControllerBase
     {
         return Ok(new { message = "Success", data = new { name = "Leonardo", id = 143 } });
     }
+
+    [HttpPost]
+    public IActionResult Post([FromBody] CreateCustomerRequest request)
+    {
+        return Ok(new { message = "Success in POST", data = new { request.Name } });
+    }
 }
