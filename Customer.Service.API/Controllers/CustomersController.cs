@@ -16,8 +16,9 @@ public class CustomersController : ControllerBase
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody] CreateCustomerRequest request)
+    public async Task<IActionResult> Post([FromBody] CreateCustomerRequest requestBody)
     {
-        return Ok(new { message = "Success in POST", data = new { request.Name } });
+        await DataDogTracingHelper.CaptureHttpRequest(HttpContext.Request, requestBody);
+        return Ok(new { message = "Success in POST", data = new { requestBody.Name } });
     }
 }
