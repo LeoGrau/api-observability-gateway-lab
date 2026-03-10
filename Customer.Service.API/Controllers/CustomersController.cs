@@ -20,9 +20,9 @@ public class CustomersController : ControllerBase
     {
         DataDogTracerHelper.CaptureHttpRequestBody(requestBody);
         DataDogTracerHelper.CaptureHttpRequestHeaders(HttpContext.Request);
-        
-        
-        var responseBody = new { message = "Success in POST", data = new { requestBody.Name } };
+
+
+        var responseBody = new { message = "Success in POST", data = new { requestBody.Name, id = 154, status = "Success" } };
 
         DataDogTracerHelper.CaptureHttpResponseBody(responseBody);
         DataDogTracerHelper.CaptureHttpResponseHeaders(HttpContext.Response);

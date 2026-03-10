@@ -3,7 +3,7 @@ WORKDIR /src
 COPY ["Customer.Service.API/","Customer.Service.API/"]
 COPY ["Shared/","Shared/"]
 RUN dotnet restore "Customer.Service.API/Customer.Service.API.csproj"
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet publish "Customer.Service.API/Customer.Service.API.csproj" -c Release -o /app/publish --no-restore
 
 FROM debian:bookworm-slim AS dd-tracer-install
 WORKDIR /tmp

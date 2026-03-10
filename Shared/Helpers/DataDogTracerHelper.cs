@@ -35,7 +35,7 @@ public static class DataDogTracerHelper
         }
     }
     
-    public static void CaptureHttpResponse<TBody>(TBody? body)
+    public static void CaptureHttpResponseBody<TBody>(TBody? body)
     {
         var scope = Tracer.Instance.ActiveScope;
         if (scope == null || body == null) return;
