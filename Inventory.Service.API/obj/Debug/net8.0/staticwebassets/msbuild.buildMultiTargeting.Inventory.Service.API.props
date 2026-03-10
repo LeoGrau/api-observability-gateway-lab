@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Inventory.Service.API.props" />
-</Project>

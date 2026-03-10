@@ -138,6 +138,22 @@
         "build": {
           "buildTransitive/net6.0/System.Text.Json.targets": {}
         }
+      },
+      "Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "Datadog.Trace": "3.38.0"
+        },
+        "compile": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Shared.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -421,46 +437,49 @@
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "Shared/1.0.0": {
+      "type": "project",
+      "path": "../Shared/Shared.csproj",
+      "msbuildProject": "../Shared/Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "Datadog.Trace >= 3.38.0",
+      "Shared >= 1.0.0",
       "Swashbuckle.AspNetCore >= 10.1.4"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\leona\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\lgrau\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Job\\Dinet\\Software\\Github\\research\\api-observability-gateway-lab\\Customer.Service.API\\Customer.Service.API.csproj",
+      "projectUniqueName": "C:\\Job\\Github\\Dinet\\Dinet Payload Test\\Customer.Service.API\\Customer.Service.API.csproj",
       "projectName": "Customer.Service.API",
-      "projectPath": "D:\\Job\\Dinet\\Software\\Github\\research\\api-observability-gateway-lab\\Customer.Service.API\\Customer.Service.API.csproj",
-      "packagesPath": "C:\\Users\\leona\\.nuget\\packages\\",
-      "outputPath": "D:\\Job\\Dinet\\Software\\Github\\research\\api-observability-gateway-lab\\Customer.Service.API\\obj\\",
+      "projectPath": "C:\\Job\\Github\\Dinet\\Dinet Payload Test\\Customer.Service.API\\Customer.Service.API.csproj",
+      "packagesPath": "C:\\Users\\lgrau\\.nuget\\packages\\",
+      "outputPath": "C:\\Job\\Github\\Dinet\\Dinet Payload Test\\Customer.Service.API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\leona\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\lgrau\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Job\\Github\\Dinet\\Dinet Payload Test\\Shared\\Shared.csproj": {
+              "projectPath": "C:\\Job\\Github\\Dinet\\Dinet Payload Test\\Shared\\Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -472,8 +491,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "10.0.100"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -507,7 +525,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.418/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

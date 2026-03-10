@@ -1,0 +1,162 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "Datadog.Trace/3.38.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Diagnostics.DiagnosticSource": "4.4.1"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/Datadog.Trace.Manual.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Datadog.Trace.Manual.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Datadog.Trace.props": {}
+        }
+      },
+      "System.Diagnostics.DiagnosticSource/4.4.1": {
+        "type": "package",
+        "compile": {
+          "ref/netcoreapp2.0/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/_._": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Datadog.Trace/3.38.0": {
+      "sha512": "ogcbDUMdpG6XJfDaP0OyKoWvSwzEDLl3Hv5p517eJhLSZcFC17/Y0Z4+xJNNxUR4wDef0wotTuqKl08vF0ww4A==",
+      "type": "package",
+      "path": "datadog.trace/3.38.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "build/Datadog.Trace.Trimming.xml",
+        "build/Datadog.Trace.props",
+        "buildTransitive/Datadog.Trace.Trimming.xml",
+        "buildTransitive/Datadog.Trace.props",
+        "datadog.trace.3.38.0.nupkg.sha512",
+        "datadog.trace.nuspec",
+        "lib/net461/Datadog.Trace.Manual.dll",
+        "lib/net461/Datadog.Trace.Manual.xml",
+        "lib/netcoreapp3.1/Datadog.Trace.Manual.dll",
+        "lib/netcoreapp3.1/Datadog.Trace.Manual.xml",
+        "lib/netstandard2.0/Datadog.Trace.Manual.dll",
+        "lib/netstandard2.0/Datadog.Trace.Manual.xml",
+        "packageIcon.png"
+      ]
+    },
+    "System.Diagnostics.DiagnosticSource/4.4.1": {
+      "sha512": "U/KcC19fyLsPN1GLmeU2zQq15MMVcPwMOYPADVo1+WIoJpvMHxrzvl+BLLZwTEZSneGwaPFZ0aWr0nJ7B7LSdA==",
+      "type": "package",
+      "path": "system.diagnostics.diagnosticsource/4.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net45/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net45/System.Diagnostics.DiagnosticSource.xml",
+        "lib/net46/System.Diagnostics.DiagnosticSource.dll",
+        "lib/net46/System.Diagnostics.DiagnosticSource.xml",
+        "lib/netcoreapp2.0/_._",
+        "lib/netstandard1.1/System.Diagnostics.DiagnosticSource.dll",
+        "lib/netstandard1.1/System.Diagnostics.DiagnosticSource.xml",
+        "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll",
+        "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.xml",
+        "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.dll",
+        "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml",
+        "ref/netcoreapp2.0/_._",
+        "system.diagnostics.diagnosticsource.4.4.1.nupkg.sha512",
+        "system.diagnostics.diagnosticsource.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "Datadog.Trace >= 3.38.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\lgrau\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Job\\Github\\Dinet\\Dinet Payload Test\\Shared\\Shared.csproj",
+      "projectName": "Shared",
+      "projectPath": "C:\\Job\\Github\\Dinet\\Dinet Payload Test\\Shared\\Shared.csproj",
+      "packagesPath": "C:\\Users\\lgrau\\.nuget\\packages\\",
+      "outputPath": "C:\\Job\\Github\\Dinet\\Dinet Payload Test\\Shared\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\lgrau\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "Datadog.Trace": {
+            "target": "Package",
+            "version": "[3.38.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.418/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

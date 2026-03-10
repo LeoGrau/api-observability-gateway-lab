@@ -20,7 +20,8 @@ services:
   customers-service:
     container_name: customers-service
     build:
-      context: ./Customer.Service.API
+      context: .
+      dockerfile: Customer.Service.API/Dockerfile
     ports:
       - 2201:8080
     networks:
@@ -36,7 +37,8 @@ services:
   order-service:
     container_name: orders-service
     build:
-      context: ./Order.Service.API
+      context: .
+      dockerfile: Order.Service.API/Dockerfile
     ports:
       - 2202:8080
     networks:
@@ -54,7 +56,8 @@ services:
     networks:
       - observability
     build:
-      context: ./Inventory.Service.API
+      context: .
+      dockerfile: Inventory.Service.API/Dockerfile
     ports:
       - 2203:8080
     environment:

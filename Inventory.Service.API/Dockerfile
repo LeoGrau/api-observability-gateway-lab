@@ -1,7 +1,8 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY . .
-RUN dotnet restore
+COPY ["Inventory.Service.API/","Inventory.Service.API/"]
+COPY ["Shared/","Shared/"]
+RUN dotnet restore "Inventory.Service.API/Inventory.Service.API.csproj"
 RUN dotnet publish -c Release -o /app/publish
 
 FROM debian:bookworm-slim AS dd-tracer-install

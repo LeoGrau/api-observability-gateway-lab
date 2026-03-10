@@ -1,7 +1,8 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY . .
-RUN dotnet restore
+COPY ["Customer.Service.API/","Customer.Service.API/"]
+COPY ["Shared/","Shared/"]
+RUN dotnet restore "Customer.Service.API/Customer.Service.API.csproj"
 RUN dotnet publish -c Release -o /app/publish
 
 FROM debian:bookworm-slim AS dd-tracer-install
@@ -14,8 +15,7 @@ RUN apt update \
     && /opt/datadog/createLogPath.sh \
     && rm /tmp/dd-apm.deb \
     && rm -rf /var/lib/apt/lists/*
-
-
+    
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
 COPY --from=build /app/publish .

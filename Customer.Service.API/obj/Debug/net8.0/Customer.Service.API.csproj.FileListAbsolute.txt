@@ -1,36 +1,3 @@
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\appsettings.Development.json
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\appsettings.json
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Customer.Service.API.exe
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Customer.Service.API.deps.json
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Customer.Service.API.runtimeconfig.json
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Customer.Service.API.dll
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Customer.Service.API.pdb
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Datadog.Trace.Manual.dll
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.csproj.AssemblyReference.cache
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.AssemblyInfoInputs.cache
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.AssemblyInfo.cs
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.csproj.CoreCompileInputs.cache
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.MvcApplicationPartsAssemblyInfo.cache
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\staticwebassets.build.json
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\staticwebassets.development.json
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\staticwebassets\msbuild.Customer.Service.API.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\staticwebassets\msbuild.build.Customer.Service.API.props
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Customer.Service.API.props
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Customer.Service.API.props
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\scopedcss\bundle\Customer.Service.API.styles.css
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.06C6F6EF.Up2Date
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.dll
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\refint\Customer.Service.API.dll
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.pdb
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.genruntimeconfig.cache
-C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\ref\Customer.Service.API.dll
 D:\Job\Dinet\Software\Github\research\api-observability-gateway-lab\Customer.Service.API\bin\Debug\net8.0\appsettings.Development.json
 D:\Job\Dinet\Software\Github\research\api-observability-gateway-lab\Customer.Service.API\bin\Debug\net8.0\appsettings.json
 D:\Job\Dinet\Software\Github\research\api-observability-gateway-lab\Customer.Service.API\bin\Debug\net8.0\Customer.Service.API.staticwebassets.endpoints.json
@@ -68,3 +35,10 @@ D:\Job\Dinet\Software\Github\research\api-observability-gateway-lab\Customer.Ser
 D:\Job\Dinet\Software\Github\research\api-observability-gateway-lab\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.pdb
 D:\Job\Dinet\Software\Github\research\api-observability-gateway-lab\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.genruntimeconfig.cache
 D:\Job\Dinet\Software\Github\research\api-observability-gateway-lab\Customer.Service.API\obj\Debug\net8.0\ref\Customer.Service.API.dll
+C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.csproj.AssemblyReference.cache
+C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.AssemblyInfoInputs.cache
+C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.AssemblyInfo.cs
+C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.csproj.CoreCompileInputs.cache
+C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Job\Github\Dinet\Dinet Payload Test\Customer.Service.API\obj\Debug\net8.0\Customer.Service.API.sourcelink.json

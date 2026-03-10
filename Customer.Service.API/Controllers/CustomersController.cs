@@ -1,6 +1,6 @@
 ﻿using System.Net.Mime;
 using Microsoft.AspNetCore.Mvc;
-
+using Shared.Helpers;
 
 namespace Customer.Service.API.Controllers;
 
@@ -16,9 +16,17 @@ public class CustomersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] CreateCustomerRequest requestBody)
+    public IActionResult Post([FromBody] CreateCustomerRequest requestBody)
     {
-        await DataDogTracingHelper.CaptureHttpRequest(HttpContext.Request, requestBody);
-        return Ok(new { message = "Success in POST", data = new { requestBody.Name } });
+        DataDogTracerHelper.CaptureHttpRequestBody(requestBody);
+        DataDogTracerHelper.CaptureHttpRequestHeaders(HttpContext.Request);
+        
+        
+        var responseBody = new { message = "Success in POST", data = new { requestBody.Name } };
+
+        DataDogTracerHelper.CaptureHttpResponseBody(responseBody);
+        DataDogTracerHelper.CaptureHttpResponseHeaders(HttpContext.Response);
+
+        return Ok(responseBody);
     }
 }
