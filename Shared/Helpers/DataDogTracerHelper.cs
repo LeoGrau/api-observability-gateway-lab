@@ -85,6 +85,7 @@ public static class DataDogTracerHelper
         foreach (var headers in response.Headers)
         {
             string key = Normalize(headers.Key);
+            // Console.WriteLine($"{}");
             if (DataDogHeaderConstants.AllowedHeaders.Contains(headers.Key.ToLowerInvariant()))
             {
                 string value = Normalize(headers.Value.ToString());
