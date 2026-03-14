@@ -1,0 +1,34 @@
+_format_version: "3.0"
+
+services: 
+  - name: orders_service
+    url: http://host.docker.internal:2202/api
+    routes:
+      - name: orders_route
+        paths:
+          - /orders
+        strip_path: false
+
+  - name: inventory_service
+    url: http://host.docker.internal:2203/api
+    routes:
+      - name: inventory_route
+        paths:
+          - /inventory
+        strip_path: false
+
+  - name: customers_service
+    url: http://host.docker.internal:2201/api
+    routes:
+      - name: customers_route
+        paths:
+          - /customers
+        strip_path: false
+plugins:
+  - name: http-log
+    config:
+      http_endpoint: https://http-intake.logs.us5.datadoghq.com/api/v2/logs
+      method: POST
+      headers:
+        DD-API-KEY: f5d1d7e94ce0edc1251ba1a8b9d3d744
+  
