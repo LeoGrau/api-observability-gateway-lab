@@ -1,0 +1,139 @@
+services:
+  dd-agent:
+    image: datadog/agent:7
+    container_name: dd-agent
+    networks:
+      - observability
+    environment:
+      DD_API_KEY: ${DD_API_KEY}
+      DD_SITE: ${DD_SITE}
+      DD_APM_ENABLED: "true"
+      DD_LOGS_ENABLED: "true"
+      DD_DOGSTATSD_NON_LOCAL_TRAFFIC: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+    ports:
+      - "8126:8126"
+  customers-service:
+    container_name: customers-service
+    build:
+      context: .
+      dockerfile: Customer.Service.API/Dockerfile
+    ports:
+      - 2201:8080
+    networks:
+      - observability
+    environment:
+      - CORECLR_ENABLE_PROFILING=1
+      - CORECLR_PROFILER={846F5F1C-F9AE-4B07-969E-05C26BC060D8}
+      - CORECLR_PROFILER_PATH=/opt/datadog/Datadog.Trace.ClrProfiler.Native.so
+      - DD_DOTNET_TRACER_HOME=/opt/datadog
+      - DD_SERVICE=customers.service.api
+      - DD_ENV=dev
+      - DD_AGENT_HOST=dd-agent
+  order-service:
+    container_name: orders-service
+    build:
+      context: .
+      dockerfile: Order.Service.API/Dockerfile
+    ports:
+      - 2202:8080
+    networks:
+      - observability
+    environment:
+      - CORECLR_ENABLE_PROFILING=1
+      - CORECLR_PROFILER={846F5F1C-F9AE-4B07-969E-05C26BC060D8}
+      - CORECLR_PROFILER_PATH=/opt/datadog/Datadog.Trace.ClrProfiler.Native.so
+      - DD_DOTNET_TRACER_HOME=/opt/datadog
+      - DD_SERVICE=order.service.api
+      - DD_ENV=dev
+      - DD_AGENT_HOST=dd-agent
+  inventory-service:
+    container_name: inventory-service
+    networks:
+      - observability
+    build:
+      context: .
+      dockerfile: Inventory.Service.API/Dockerfile
+    ports:
+      - 2203:8080
+    environment:
+      - CORECLR_ENABLE_PROFILING=1
+      - CORECLR_PROFILER={846F5F1C-F9AE-4B07-969E-05C26BC060D8}
+      - CORECLR_PROFILER_PATH=/opt/datadog/Datadog.Trace.ClrProfiler.Native.so
+      - DD_DOTNET_TRACER_HOME=/opt/datadog
+      - DD_SERVICE=inventory.service.api
+      - DD_ENV=dev
+      - DD_AGENT_HOST=dd-agent
+  kong-oss-database:
+    container_name: kong-oss-database
+    image: postgres:latest
+    restart: on-failure
+    volumes:
+      - kong_db_data:/var/lib/postgresql
+    networks:
+      - kong-oss-net
+    environment:
+      POSTGRES_USER: kong
+      POSTGRES_DB: kong
+      POSTGRES_PASSWORD: kong
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "kong"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    ports:
+      - "5432:5432"
+  kong-bootstrap:
+    image: kong/kong-gateway:3.13.0.2
+    container_name: kong-bootstrap
+    networks:
+      - kong-oss-net
+    depends_on:
+      kong-oss-database:
+        condition: service_healthy  
+    restart: on-failure
+    environment:
+      KONG_DATABASE: postgres             
+      KONG_PG_HOST: kong-oss-database      
+      KONG_PG_DATABASE: kong              
+      KONG_PG_USER: kong                 
+      KONG_PG_PASSWORD: kong
+      # WSL
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+    ports:
+      - "8000:8000"
+      - "127.0.0.1:8001:8001"           
+    command: kong migrations bootstrap
+  kong-gateway:
+    image: kong/kong-gateway:3.13.0.2
+    container_name: kong-gateway
+    restart: on-failure
+    networks:
+      - kong-oss-net
+    environment:
+      KONG_DATABASE: postgres             
+      KONG_PG_HOST: kong-oss-database      
+      KONG_PG_DATABASE: kong              
+      KONG_PG_USER: kong                 
+      KONG_PG_PASSWORD: kong
+      # WSL
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+    depends_on:
+      kong-bootstrap:
+        condition: service_completed_successfully
+    ports:
+      - "8000:8000"
+      - "127.0.0.1:8001:8001"
+volumes:
+  kong_db_data: {}
+networks:
+  observability:
+    driver: bridge
+  kong-oss-net:
+    driver: bridge

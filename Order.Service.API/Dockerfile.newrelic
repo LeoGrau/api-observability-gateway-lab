@@ -1,0 +1,21 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+COPY ["Order.Service.API/","Order.Service.API/"]
+COPY ["Shared/","Shared/"]
+RUN dotnet restore "Order.Service.API/Order.Service.API.csproj"
+RUN dotnet publish "Order.Service.API/Order.Service.API.csproj" -c Release -o /app/publish --no-restore
+
+FROM debian:bookworm-slim AS newrelic-profiler-install
+WORKDIR /tmp
+RUN apt-get update && apt-get install -y curl ca-certificates gnupg \
+&& echo 'deb [signed-by=/etc/apt/keyrings/newrelic-apt.gpg] http://apt.newrelic.com/debian/ newrelic non-free' | tee /etc/apt/sources.list.d/newrelic.list \
+&& curl -fsSL https://download.newrelic.com/NEWRELIC_APT_2DAD550E.public | gpg --dearmor > /etc/apt/keyrings/newrelic-apt.gpg \
+&& apt-get update \
+&& apt-get install -y newrelic-dotnet-agent \
+&& rm -rf /var/lib/apt/lists/*
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
+COPY --from=build /app/publish .
+COPY --from=newrelic-profiler-install /usr/local/newrelic-dotnet-agent /usr/local/newrelic-dotnet-agent
+COPY --from=newrelic-profiler-install /etc/profile.d/ /etc/profile.d/
+ENTRYPOINT ["dotnet", "Order.Service.API.dll"]

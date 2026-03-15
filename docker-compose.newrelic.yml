@@ -1,0 +1,133 @@
+services:
+  customers-service:
+    container_name: customers-service
+    build:
+      context: .
+      dockerfile: Customer.Service.API/Dockerfile.newrelic
+    ports:
+      - 2201:8080
+    networks:
+      - observability
+    environment:
+      - CORECLR_ENABLE_PROFILING=1
+      - CORECLR_PROFILER={36032161-FFC0-4B61-B559-F6C5D41BAE5A}
+      - CORECLR_PROFILER_PATH=/usr/local/newrelic-dotnet-agent/libNewRelicProfiler.so
+      - CORECLR_NEWRELIC_HOME=/usr/local/newrelic-dotnet-agent
+      - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
+      - NEW_RELIC_APP_NAME=customer.service.api
+  order-service:
+    container_name: orders-service
+    build:
+      context: .
+      dockerfile: Order.Service.API/Dockerfile.newrelic
+    ports:
+      - 2202:8080
+    networks:
+      - observability
+    environment:
+      - CORECLR_ENABLE_PROFILING=1
+      - CORECLR_PROFILER={36032161-FFC0-4B61-B559-F6C5D41BAE5A}
+      - CORECLR_PROFILER_PATH=/usr/local/newrelic-dotnet-agent/libNewRelicProfiler.so
+      - CORECLR_NEWRELIC_HOME=/usr/local/newrelic-dotnet-agent
+      - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
+      - NEW_RELIC_APP_NAME=order.service.api
+  inventory-service:
+    container_name: inventory-service
+    networks:
+      - observability
+    build:
+      context: .
+      dockerfile: Inventory.Service.API/Dockerfile.newrelic
+    ports:
+      - 2203:8080
+    environment:
+      - CORECLR_ENABLE_PROFILING=1
+      - CORECLR_PROFILER={36032161-FFC0-4B61-B559-F6C5D41BAE5A}
+      - CORECLR_PROFILER_PATH=/usr/local/newrelic-dotnet-agent/libNewRelicProfiler.so
+      - CORECLR_NEWRELIC_HOME=/usr/local/newrelic-dotnet-agent
+      - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
+      - NEW_RELIC_APP_NAME=inventory.service.api
+  kong-oss-database:
+    container_name: kong-oss-database
+    image: postgres:latest
+    restart: on-failure
+    volumes:
+      - kong_db_data:/var/lib/postgresql
+    networks:
+      - kong-oss-net
+    environment:
+      POSTGRES_USER: kong
+      POSTGRES_DB: kong
+      POSTGRES_PASSWORD: kong
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "kong"]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    ports:
+      - "5432:5432"
+  kong-bootstrap:
+    image: kong/kong-gateway:3.13.0.2
+    container_name: kong-bootstrap
+    networks:
+      - kong-oss-net
+    depends_on:
+      kong-oss-database:
+        condition: service_healthy  
+    restart: on-failure
+    environment:
+      KONG_DATABASE: postgres             
+      KONG_PG_HOST: kong-oss-database      
+      KONG_PG_DATABASE: kong              
+      KONG_PG_USER: kong                 
+      KONG_PG_PASSWORD: kong
+      # WSL
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+    ports:
+      - "8000:8000"
+      - "127.0.0.1:8001:8001"           
+    command: kong migrations bootstrap
+  kong-gateway:
+    image: kong/kong-gateway:3.13.0.2
+    container_name: kong-gateway
+    restart: on-failure
+    networks:
+      - kong-oss-net
+    environment:
+      KONG_DATABASE: postgres             
+      KONG_PG_HOST: kong-oss-database      
+      KONG_PG_DATABASE: kong              
+      KONG_PG_USER: kong                 
+      KONG_PG_PASSWORD: kong
+      # WSL
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+    depends_on:
+      kong-bootstrap:
+        condition: service_completed_successfully
+    ports:
+      - "8000:8000"
+      - "127.0.0.1:8001:8001"
+  nr-agent:
+    container_name: newrelic-infra
+    build:
+      context: .
+      dockerfile: newrelic-infra/Dockerfile
+    cap_add:
+      - SYS_PTRACE
+    network_mode: bridge
+    pid: host
+    privileged: true
+    volumes:
+      - "/:/host:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    restart: unless-stopped
+
+volumes:
+  kong_db_data: {}
+networks:
+  observability:
+    driver: bridge
+  kong-oss-net:
+    driver: bridge
